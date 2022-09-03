@@ -37,14 +37,18 @@ namespace FlightApps.Views
 
         private void femaleCheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            femaleCheckBox.IsChecked = true;
-            maleCheckBox.IsChecked = false;
+            if (femaleCheckBox.IsChecked)
+            {
+                maleCheckBox.IsChecked = false;
+            }
         }
 
         private void maleCheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            femaleCheckBox.IsChecked = false;
-            maleCheckBox.IsChecked = true;
+            if(maleCheckBox.IsChecked)
+            {
+                femaleCheckBox.IsChecked = false;
+            }
         }
     }
 }
