@@ -1,6 +1,7 @@
 ﻿using FlightApps.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace FlightApps.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignUpPage : ContentPage
     {
+        string tempPassword = "";
         public SignUpPage()
         {
             InitializeComponent();
@@ -32,7 +34,16 @@ namespace FlightApps.Views
 
         private void ShowPassword_Tapped(object sender, EventArgs e)
         {
-            maleCheckBox.IsChecked = false;
+            if(entryPassword.IsPassword)
+            {
+                entryPassword.IsPassword = false;
+                imgPassword.Source = "show_password.png";
+            }
+            else
+            {
+                entryPassword.IsPassword = true;
+                imgPassword.Source = "hide_password.png";
+            }
         }
 
         private void femaleCheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
@@ -48,6 +59,34 @@ namespace FlightApps.Views
             if(maleCheckBox.IsChecked)
             {
                 femaleCheckBox.IsChecked = false;
+            }
+        }
+
+        private void entryPassword_TextChanged(object sender, TextChangedEventArgs e)
+        {
+        }
+
+        private void SignUpButton_Clicked(object sender, EventArgs e)
+        {
+            DateTime dob;
+           
+            if (string.IsNullOrEmpty(entryEmail.Text) || string.IsNullOrEmpty(entryPassword.Text)
+                || string.IsNullOrEmpty(entryGivenName.Text) || string.IsNullOrEmpty(entryFamilyName.Text) ||
+                string.IsNullOrEmpty(entryDOB.Text))
+            {
+                lblError.Text = "Please fill in all of the fields";
+            }
+            else if(entryPassword.Text.Length < 6)
+            {
+                lblError.Text = "Password must be at least 6 characters";
+            }
+            else if (!DateTime.TryParseExact(entryDOB.Text, "dd/MM/yyyy", null, DateTimeStyles.None, out dob))
+            {
+                lblError.Text = "DOB is not in correct format";
+            }
+            else
+            {
+                lblError.Text = "";
             }
         }
     }
