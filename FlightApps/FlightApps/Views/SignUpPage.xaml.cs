@@ -10,17 +10,12 @@ using Xamarin.Forms.Xaml;
 namespace FlightApps.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class SignUpPage : ContentPage
     {
-        public LoginPage()
+        public SignUpPage()
         {
             InitializeComponent();
             this.BindingContext = new LoginViewModel();
-        }
-
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            Application.Current.MainPage.Navigation.PushAsync(new SignUpPage());
         }
     }
 }
