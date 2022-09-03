@@ -1,4 +1,5 @@
 ﻿using FlightApps.Models;
+using FlightApps.Services;
 using FlightApps.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace FlightApps.Views
     public partial class SignUpPage : ContentPage
     {
         SignUpViewModel vm;
+        LoginService service = new LoginService();
         public SignUpPage()
         {
             InitializeComponent();
@@ -70,7 +72,7 @@ namespace FlightApps.Views
         {
         }
 
-        private void SignUpButton_Clicked(object sender, EventArgs e)
+        private async void SignUpButton_Clicked(object sender, EventArgs e)
         {
             DateTime dob;
            
@@ -98,7 +100,20 @@ namespace FlightApps.Views
                 user.Gender = maleCheckBox.IsChecked ? "Male" : "Female";
                 user.GivenName = entryGivenName.Text;
                 user.Password = entryPassword.Text;
-               vm.Users.Add(user);
+                vm.Users.Add(user);
+
+                SignUpButton.IsEnabled = false;
+                lblError.Text = "Loading...";
+                string retrievedData = await service.RegisterUser(user);
+
+                if(retrievedData.ToLower().Contains("success"))
+                {
+                    Application.Current.MainPage.Navigation.PushAsync(new LoginPage());
+                }
+                else
+                {
+                    lblError.Text = retrievedData;
+                }
             }
         }
     }
