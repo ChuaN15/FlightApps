@@ -4,31 +4,50 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:vm="clr-namespace:FlightApps.ViewModels"
              x:Class="FlightApps.Views.SignUpPage"
              Shell.NavBarIsVisible="True">
+    <ContentPage.BindingContext>
+        <vm:SignUpViewModel />
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,*"
               Margin="15"
-              ColumnDefinitions="5*,5*">
-            <Label Text="test" FontSize="30" FontAttributes="Bold" TextColor="Black" Grid.Row="0" Grid.Column="0"/>
-            <Label Text="airasia"  FontSize="30" FontAttributes="Bold" TextColor="Red" Grid.Row="0" Grid.Column="1" HorizontalOptions="EndAndExpand" />
-            <Label Text="Welcome back" Margin="0,10" FontSize="20" TextColor="Black" Grid.Row="1" Grid.Column="0"/>
+              ColumnDefinitions="3*,7*">
+            <StackLayout Orientation="Horizontal">
+                <RadioButton x:Name="maleCheckBox"></RadioButton>
+                <Label Text="Male" FontSize="20" VerticalOptions="Center" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Male_Tapped" />
+                </StackLayout.GestureRecognizers> 
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Grid.Column="1">
+                <RadioButton x:Name="femaleCheckBox"></RadioButton>
+                <Label Text="Female" FontSize="20" VerticalOptions="Center" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Female_Tapped" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
             <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Padding="5" Orientation="Vertical">
-                <Entry Placeholder="Email" FontSize="Medium" Margin="0"  />
+                <Entry x:Name="entryEmail" Placeholder="Email" FontSize="Medium" Margin="0"  />
                 <Grid  ColumnDefinitions="*,Auto">
-                    <Entry Placeholder="Password" HorizontalOptions="Fill" FontSize="Medium" Margin="0" Grid.Column="0"  />
-                    <Image Source="hide_password.png" HorizontalOptions="EndAndExpand" WidthRequest="30"  Grid.Column="1" />
+                    <Entry x:Name="entryPassword" Placeholder="Password" HorizontalOptions="Fill" FontSize="Medium" Margin="0" Grid.Column="0"  />
+                    <StackLayout HorizontalOptions="EndAndExpand"  Grid.Column="1">
+                        <Image Source="hide_password.png" WidthRequest="30" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ShowPassword_Tapped" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
                 </Grid>
+                <Entry x:Name="entryGivenName" Placeholder="Given Name" FontSize="Medium" Margin="0"  />
+                <Entry x:Name="entryFamilyName" Placeholder="Family Name / Surname" FontSize="Medium" Margin="0"  />
+                <Entry x:Name="entryDOB" Placeholder="Date of birth (DD/MM/YYYY)" FontSize="Medium" Margin="0"  />
+
             </StackLayout>
 
             <StackLayout VerticalOptions="Fill" Grid.ColumnSpan="2" Grid.Row="4">
                 <Button VerticalOptions="Center" Text="Countinue" BackgroundColor="Red" Command="{Binding LoginCommand}"/>
             </StackLayout>
-            <Label Text="Forgot Password?" FontSize="15" Margin="0,5" Grid.Row="5" Grid.Column="0"/>
-            <Label Text="Sign up now" FontSize="15" Grid.Row="5" Margin="0,5" Grid.Column="1" HorizontalOptions="EndAndExpand"/>
-
-            <Label Text="In logging in it is demand that you have read and agreed in AirAsia Terms of Use and Privacy Policy" FontSize="12" Grid.Row="6" Margin="0" 
-                   Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="EndAndExpand"/>
 
         </Grid>
     </ContentPage.Content>

@@ -17,5 +17,20 @@ namespace FlightApps.Views
             InitializeComponent();
             this.BindingContext = new LoginViewModel();
         }
+
+        private void Male_Tapped(object sender, EventArgs e)
+        {
+            femaleCheckBox.IsChecked = false;
+        }
+
+        private void Female_Tapped(object sender, EventArgs e)
+        {
+            maleCheckBox.IsChecked = false;
+        }
+
+        private void ShowPassword_Tapped(object sender, EventArgs e)
+        {
+            maleCheckBox.IsChecked = false;
+        }
     }
 }
