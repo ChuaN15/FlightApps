@@ -13,9 +13,16 @@
             <Label Text="rewards" FontSize="30" FontAttributes="Bold" Grid.Row="0" Grid.Column="0"/>
             <Label Text="airasia"  FontSize="30" FontAttributes="Bold" TextColor="Red" Grid.Row="0" Grid.Column="1" HorizontalOptions="EndAndExpand" />
             <Label Text="Welcome back" FontSize="20" Grid.Row="1" Grid.Column="0"/>
+            <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Padding="5" Orientation="Vertical">
+                <Editor Text="Email" AutoSize="TextChanges" FontSize="Medium" Margin="0"  />
+                <Grid  ColumnDefinitions="*,Auto">
+                    <Editor Text="Password" HorizontalOptions="Fill" FontSize="Medium" Margin="0" Grid.Column="0"  />
+                    <Image Source="hide_password.png" HorizontalOptions="EndAndExpand" WidthRequest="30"  Grid.Column="1" />
+                </Grid>
+            </StackLayout>
 
-            <StackLayout Padding="10,0,10,0" VerticalOptions="Center" Grid.Row="4">
-                <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+            <StackLayout Padding="10,0,10,0" VerticalOptions="Fill" Grid.ColumnSpan="2" Grid.Row="4">
+                <Button VerticalOptions="Center" Text="Countinue" BackgroundColor="Red" Command="{Binding LoginCommand}"/>
             </StackLayout>
         </Grid>
     </ContentPage.Content>

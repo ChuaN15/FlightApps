@@ -142,4 +142,10 @@
       <Name>FlightApps</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hide_password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\show_password.png" />
+  </ItemGroup>
 </Project>
