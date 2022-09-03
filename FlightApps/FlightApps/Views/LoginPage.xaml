@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FlightApps.Views.LoginPage"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+              Margin="15"
+              ColumnDefinitions="5*,5*">
+            <Label Text="rewards" FontSize="30" FontAttributes="Bold" Grid.Row="0" Grid.Column="0"/>
+            <Label Text="airasia"  FontSize="30" FontAttributes="Bold" TextColor="Red" Grid.Row="0" Grid.Column="1" HorizontalOptions="EndAndExpand" />
+            <Label Text="Welcome back" FontSize="20" Grid.Row="1" Grid.Column="0"/>
+
+            <StackLayout Padding="10,0,10,0" VerticalOptions="Center" Grid.Row="4">
+                <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
