@@ -1,4 +1,5 @@
-﻿using FlightApps.ViewModels;
+﻿using FlightApps.Models;
+using FlightApps.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -13,11 +14,14 @@ namespace FlightApps.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignUpPage : ContentPage
     {
-        string tempPassword = "";
+        SignUpViewModel vm;
         public SignUpPage()
         {
             InitializeComponent();
-            this.BindingContext = new LoginViewModel();
+            vm = new SignUpViewModel();
+            this.BindingContext = vm;
+
+            maleCheckBox.IsChecked = true;
         }
 
         private void Male_Tapped(object sender, EventArgs e)
@@ -87,6 +91,14 @@ namespace FlightApps.Views
             else
             {
                 lblError.Text = "";
+                User user = new User();
+                user.DateOfBirth = dob;
+                user.Email = entryEmail.Text;
+                user.FamilyName = entryFamilyName.Text;
+                user.Gender = maleCheckBox.IsChecked ? "Male" : "Female";
+                user.GivenName = entryGivenName.Text;
+                user.Password = entryPassword.Text;
+               vm.Users.Add(user);
             }
         }
     }
