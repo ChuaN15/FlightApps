@@ -11,10 +11,12 @@ namespace FlightApps.Services
     public class LoginService
     {
         HttpClient client = new HttpClient();
+        public string tempNgrokURL = "http://abfe-122-129-122-194.ngrok.io/";
+
         //Post
         public async Task<List<User>> RegisterUser(User item)
         {
-            List<User> Items = new List<User>();
+            List<User> users = new List<User>();
             var urlGetDashboard = "https://6ff8-2001-f40-904-4829-b054-21cb-c957-48f1.ngrok.io/Home/getAssetList";
 
             Uri uri = new Uri(string.Format(urlGetDashboard, string.Empty));
