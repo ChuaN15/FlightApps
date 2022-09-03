@@ -21,16 +21,30 @@ namespace FlightApps.Views
         private void Male_Tapped(object sender, EventArgs e)
         {
             femaleCheckBox.IsChecked = false;
+            maleCheckBox.IsChecked = true;
         }
 
         private void Female_Tapped(object sender, EventArgs e)
         {
             maleCheckBox.IsChecked = false;
+            femaleCheckBox.IsChecked = true;
         }
 
         private void ShowPassword_Tapped(object sender, EventArgs e)
         {
             maleCheckBox.IsChecked = false;
+        }
+
+        private void femaleCheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            femaleCheckBox.IsChecked = true;
+            maleCheckBox.IsChecked = false;
+        }
+
+        private void maleCheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            femaleCheckBox.IsChecked = false;
+            maleCheckBox.IsChecked = true;
         }
     }
 }
