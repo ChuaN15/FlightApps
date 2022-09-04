@@ -24,12 +24,22 @@ namespace FlightApps.Views
 
         private void OnewayRecognizer_Tapped(object sender, EventArgs e)
         {
-
+            lblOneWay.FontAttributes = FontAttributes.Bold;
+            lblOneWay.FontSize = 24;
+            lblRoundTrip.FontAttributes = FontAttributes.None;
+            lblRoundTrip.FontSize = 20;
+            lblDash.IsVisible = false;
+            EndDatePicker.IsVisible = false;
         }
 
         private void RoundTripRecognizer_Tapped(object sender, EventArgs e)
         {
-
+            lblRoundTrip.FontAttributes = FontAttributes.Bold;
+            lblRoundTrip.FontSize = 24;
+            lblOneWay.FontAttributes = FontAttributes.None;
+            lblOneWay.FontSize = 20;
+            lblDash.IsVisible = true;
+            EndDatePicker.IsVisible = true;
         }
     }
 }
