@@ -1,4 +1,5 @@
 ﻿using FlightApps.Models;
+using FlightApps.Services;
 using FlightApps.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -24,13 +25,28 @@ namespace FlightApps.Views
             Application.Current.MainPage.Navigation.PushAsync(new SignUpPage());
         }
 
-        private void Login_Clicked(object sender, EventArgs e)
+        private async void Login_Clicked(object sender, EventArgs e)
         {
             User user = new User();
             user.Email = entryLoginEmail.Text;
             user.Password = entryLoginPassword.Text;
+            LoginButton.IsEnabled = false;
+            LoginButton.Text = "Processing...";
 
+            LoginService service = new LoginService();
+            User selectedUser = await service.UserLogin(user);
 
+            LoginButton.IsEnabled = true;
+            LoginButton.Text = "Continue";
+            if (selectedUser == null)
+            {
+                lblError.Text = "Please enter correct login credentials!";
+            }
+            else
+            {
+                lblError.Text = "";
+                Application.Current.MainPage.Navigation.PushAsync(new SignUpPage());
+            }
         }
     }
 }

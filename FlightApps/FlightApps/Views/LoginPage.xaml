@@ -22,7 +22,8 @@
             </StackLayout>
 
             <StackLayout VerticalOptions="Fill" Grid.ColumnSpan="2" Grid.Row="4">
-                <Button VerticalOptions="Center" Text="Countinue" BackgroundColor="Red" Clicked="Login_Clicked"/>
+                <Button x:Name="LoginButton" VerticalOptions="Center" Text="Countinue" BackgroundColor="Red" Clicked="Login_Clicked"/>
+                <Label x:Name="lblError" Text="" TextColor="Red" FontSize="12" />
             </StackLayout>
             <Label Text="Forgot Password?" FontSize="15" Margin="0,5" Grid.Row="5" Grid.Column="0"/>
             <StackLayout  Grid.Row="5" Margin="0,5" Grid.Column="1" HorizontalOptions="EndAndExpand">
