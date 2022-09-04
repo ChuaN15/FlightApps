@@ -21,8 +21,10 @@
 
         <StackLayout Grid.Row="1" Margin="15" Grid.ColumnSpan="2">
             <Label Text="Departure" FontSize="36" TextColor="DarkBlue" FontAttributes="Bold"></Label>
-            <Label Text="Select" FontSize="18"></Label>
-        </StackLayout>
+                <Picker Title="Select" ItemsSource="{Binding AirportList}"
+            ItemDisplayBinding="{Binding City}" SelectedItem="{Binding DepartureAirport, Mode=TwoWay}"
+                    />
+            </StackLayout>
 
         <BoxView Grid.Row="2" Grid.ColumnSpan="2"
                    HeightRequest="1"
@@ -31,8 +33,10 @@
         
         <StackLayout Grid.Row="3" Margin="15" Grid.ColumnSpan="2">
             <Label Text="Arrival" FontSize="36" TextColor="DarkBlue" FontAttributes="Bold"></Label>
-            <Label Text="Select" FontSize="18"></Label>
-        </StackLayout>
+                <Picker Title="Select" ItemsSource="{Binding AirportList}" 
+            ItemDisplayBinding="{Binding City}" SelectedItem="{Binding ArrivalAirport, Mode=TwoWay}"
+                    />
+            </StackLayout>
 
         <BoxView Grid.Row="4" Grid.ColumnSpan="2"
                    HeightRequest="1"

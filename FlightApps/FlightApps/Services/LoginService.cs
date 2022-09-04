@@ -68,11 +68,11 @@ namespace FlightApps.Services
             Uri uri = new Uri(string.Format(URL, string.Empty));
 
             HttpResponseMessage response = null;
-            response = await client.GetAsync(uri);
+            response = await client.GetAsync(uri).ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode)
             {
-                string data = await response.Content.ReadAsStringAsync();
+                string data = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 List<Airport> airports = JsonConvert.DeserializeObject<List<Airport>>(data);
                 return airports;
             }
