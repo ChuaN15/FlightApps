@@ -37,5 +37,27 @@ namespace FlightApps.Services
 
             return "";
         }
+
+        public async Task<User> UserLogin(User user)
+        {
+            var loginURL = tempNgrokURL + "Home/Login";
+
+            Uri uri = new Uri(string.Format(loginURL, string.Empty));
+
+            string json = JsonConvert.SerializeObject(user);
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = null;
+            response = await client.PostAsync(uri, content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                User selectedUser = JsonConvert.DeserializeObject<User>(data);
+                return selectedUser;
+            }
+
+            return null;
+        }
     }
 }

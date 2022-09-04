@@ -1,4 +1,5 @@
-﻿using FlightApps.ViewModels;
+﻿using FlightApps.Models;
+using FlightApps.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,15 @@ namespace FlightApps.Views
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             Application.Current.MainPage.Navigation.PushAsync(new SignUpPage());
+        }
+
+        private void Login_Clicked(object sender, EventArgs e)
+        {
+            User user = new User();
+            user.Email = entryLoginEmail.Text;
+            user.Password = entryLoginPassword.Text;
+
+
         }
     }
 }
