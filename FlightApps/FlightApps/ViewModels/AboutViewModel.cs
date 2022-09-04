@@ -11,6 +11,7 @@ namespace FlightApps.ViewModels
     public class AboutViewModel : BaseViewModel
     {
         public ObservableCollection<Cabin> CabinList { get; }
+        public ObservableCollection<Airport> AirportList { get; }
 
         public Cabin SelectedCabin { get; }
         public AboutViewModel()
@@ -19,6 +20,8 @@ namespace FlightApps.ViewModels
             CabinList.Add(new Cabin(1, "Economy"));
             CabinList.Add(new Cabin(2, "Business"));
             CabinList.Add(new Cabin(3, "First Class"));
+
+            AirportList = new ObservableCollection<Airport>();
 
             Title = "About";
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
