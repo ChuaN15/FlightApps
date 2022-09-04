@@ -31,6 +31,22 @@ namespace FlightApps.ViewModels
             set => SetProperty(ref departureTitle, value);
         }
 
+
+
+        private DateTime startDate = DateTime.Now;
+        public DateTime StartDate
+        {
+            get => startDate;
+            set => SetProperty(ref startDate, value);
+        }
+
+        private DateTime endDate = DateTime.Now.AddDays(7);
+        public DateTime EndDate
+        {
+            get => endDate;
+            set => SetProperty(ref endDate, value);
+        }
+
         public AboutViewModel()
         {
             CabinList = new ObservableCollection<Cabin>();

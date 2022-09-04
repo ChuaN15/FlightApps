@@ -11,5 +11,25 @@ namespace FlightApps.Views
         {
             InitializeComponent();
         }
+
+        private void StartDatePicker_DateSelected(object sender, DateChangedEventArgs e)
+        {
+
+        }
+
+        private void EndDatePicker_DateSelected(object sender, DateChangedEventArgs e)
+        {
+
+        }
+
+        private void OnewayRecognizer_Tapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RoundTripRecognizer_Tapped(object sender, EventArgs e)
+        {
+
+        }
     }
 }

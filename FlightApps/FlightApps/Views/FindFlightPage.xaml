@@ -13,10 +13,16 @@
         <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
           ColumnDefinitions="5*,5*">
         <StackLayout Margin="-10,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10" BackgroundColor="LightGray">
-            <Label Text="Round Trip" FontAttributes="Bold" FontSize="23" HorizontalOptions="CenterAndExpand"></Label>
-        </StackLayout>
+            <Label x:Name="lblRoundTrip" Text="Round Trip" FontAttributes="Bold" FontSize="23" HorizontalOptions="CenterAndExpand"></Label>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="RoundTripRecognizer_Tapped" NumberOfTapsRequired="1" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
         <StackLayout Margin="-10,0" Orientation="Horizontal" Grid.Column="1" HorizontalOptions="FillAndExpand" Padding="10" BackgroundColor="LightGray">
-            <Label Text="One Way" FontSize="23" HorizontalOptions="CenterAndExpand"></Label>
+                <Label x:Name="lblOneWay" Text="One Way" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnewayRecognizer_Tapped" NumberOfTapsRequired="1" />
+                </StackLayout.GestureRecognizers>
         </StackLayout>
 
         <StackLayout Grid.Row="1" Margin="15" Grid.ColumnSpan="2">
@@ -46,19 +52,21 @@
             <Label Grid.Row="5" Text="Travel dates" FontSize="18" FontAttributes="Bold" Margin="15,10,15,0" />
             <Grid Grid.ColumnSpan="2" Grid.Row="6" ColumnDefinitions="5*,1*,5*">
                 <StackLayout Margin="-10,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
-                    <Label Text="15/5/2022" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+                    <DatePicker x:Name="StartDatePicker" HorizontalOptions="CenterAndExpand"
+                Date="{Binding StartDate}" Format="dd/MM/yyyy" DateSelected="StartDatePicker_DateSelected" />
                 </StackLayout>
                 <StackLayout Margin="-10,0" Orientation="Horizontal" Grid.Column="1" HorizontalOptions="FillAndExpand" Padding="10">
                     <Label Text="-" FontSize="23" HorizontalOptions="CenterAndExpand"></Label>
                 </StackLayout>
                 <StackLayout Margin="-10,0" Orientation="Horizontal" Grid.Column="2" HorizontalOptions="FillAndExpand" Padding="10">
-                    <Label Text="20/5/2022" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+                    <DatePicker x:Name="EndDatePicker" HorizontalOptions="CenterAndExpand"
+                Date="{Binding EndDate}" Format="dd/MM/yyyy" DateSelected="EndDatePicker_DateSelected" />
                 </StackLayout>
             </Grid>
 
             <StackLayout Grid.Row="7" Margin="15">
                 <Label Text="Passengers" FontSize="18" FontAttributes="Bold" />
-                <Label Text="1" Margin="40,0" HorizontalOptions="StartAndExpand"></Label>
+                <Entry x:Name="entryPassenger" Placeholder="Passengers" />
             </StackLayout>
 
             <StackLayout Grid.Row="7" Grid.Column="1" Margin="15">
