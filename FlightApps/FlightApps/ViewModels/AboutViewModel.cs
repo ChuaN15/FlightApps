@@ -23,6 +23,14 @@ namespace FlightApps.ViewModels
         public Airport DepartureAirport { get; }
         public Airport ArrivalAirport { get; }
         public Cabin SelectedCabin { get; }
+
+        private string departureTitle = "Retrieving...";
+        public string DepartureTitle
+        {
+            get => departureTitle;
+            set => SetProperty(ref departureTitle, value);
+        }
+
         public AboutViewModel()
         {
             CabinList = new ObservableCollection<Cabin>();
@@ -43,6 +51,8 @@ namespace FlightApps.ViewModels
             var tempList = await service.GetAirportList();
 
             AirportList = new ObservableCollection<Airport>(tempList);
+
+            DepartureTitle = "Select";
         }
 
         public ICommand OpenWebCommand { get; }
