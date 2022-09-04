@@ -12,11 +12,16 @@ namespace FlightApps.ViewModels
 {
     public class AboutViewModel : BaseViewModel
     {
+        private ObservableCollection<Airport> airportList;
+
         public ObservableCollection<Cabin> CabinList { get; }
-        public ObservableCollection<Airport> AirportList { get; }
+        public ObservableCollection<Airport> AirportList
+        {
+            get => airportList;
+            set => SetProperty(ref airportList, value);
+        }
         public Airport DepartureAirport { get; }
         public Airport ArrivalAirport { get; }
-
         public Cabin SelectedCabin { get; }
         public AboutViewModel()
         {
@@ -27,15 +32,17 @@ namespace FlightApps.ViewModels
 
             AirportList = new ObservableCollection<Airport>();
 
-            LoginService service = new LoginService();
-            var tempList = service.GetAirportList();
-
-            AirportList = new ObservableCollection<Airport>(tempList.Result);
-
-           
-
             Title = "About";
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
+            LoadAirports();
+        }
+
+        public async void LoadAirports()
+        {
+            LoginService service = new LoginService();
+            var tempList = await service.GetAirportList();
+
+            AirportList = new ObservableCollection<Airport>(tempList);
         }
 
         public ICommand OpenWebCommand { get; }
