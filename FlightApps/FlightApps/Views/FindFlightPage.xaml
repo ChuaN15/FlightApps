@@ -59,7 +59,10 @@
 
             <StackLayout Grid.Row="7" Grid.Column="1" Margin="15">
                 <Label Text="Cabin" FontSize="18" FontAttributes="Bold" />
-                <Label Text="Economy" Margin="40,0" HorizontalOptions="StartAndExpand"></Label>
+            <Picker x:Name="CabinPicker" Title="Cabin" ItemsSource="{Binding CabinList}"
+            ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedCabin, Mode=TwoWay}"
+                    />
+
             </StackLayout>
 
             <Button Grid.Row="8" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand"  
