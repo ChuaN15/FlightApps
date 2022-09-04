@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlightApps.Views.FindFlightPage"
+             xmlns:vm="clr-namespace:FlightApps.ViewModels"
+             Title="Book Flight">
+    
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+          ColumnDefinitions="5*,5*">
+        <StackLayout Margin="-10,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10" BackgroundColor="LightGray">
+            <Label Text="Round Trip" FontAttributes="Bold" FontSize="23" HorizontalOptions="CenterAndExpand"></Label>
+        </StackLayout>
+        <StackLayout Margin="-10,0" Orientation="Horizontal" Grid.Column="1" HorizontalOptions="FillAndExpand" Padding="10" BackgroundColor="LightGray">
+            <Label Text="One Way" FontSize="23" HorizontalOptions="CenterAndExpand"></Label>
+        </StackLayout>
+
+        <StackLayout Grid.Row="1" Margin="15" Grid.ColumnSpan="2">
+            <Label Text="Departure" FontSize="36" TextColor="DarkBlue" FontAttributes="Bold"></Label>
+            <Label Text="Select" FontSize="18"></Label>
+        </StackLayout>
+
+        <BoxView Grid.Row="2" Grid.ColumnSpan="2"
+                   HeightRequest="1"
+                   Color="LightGray"
+                   Margin ="20, 0, 20, 0"/>
+        
+        <StackLayout Grid.Row="3" Margin="15" Grid.ColumnSpan="2">
+            <Label Text="Arrival" FontSize="36" TextColor="DarkBlue" FontAttributes="Bold"></Label>
+            <Label Text="Select" FontSize="18"></Label>
+        </StackLayout>
+
+        <BoxView Grid.Row="4" Grid.ColumnSpan="2"
+                   HeightRequest="1"
+                   Color="LightGray"
+                   Margin ="20, 0, 20, 0"/>
+
+            <Label Grid.Row="5" Text="Travel dates" FontSize="18" FontAttributes="Bold" Margin="15,10,15,0" />
+            <Grid Grid.ColumnSpan="2" Grid.Row="6" ColumnDefinitions="5*,1*,5*">
+                <StackLayout Margin="-10,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
+                    <Label Text="15/5/2022" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+                <StackLayout Margin="-10,0" Orientation="Horizontal" Grid.Column="1" HorizontalOptions="FillAndExpand" Padding="10">
+                    <Label Text="-" FontSize="23" HorizontalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+                <StackLayout Margin="-10,0" Orientation="Horizontal" Grid.Column="2" HorizontalOptions="FillAndExpand" Padding="10">
+                    <Label Text="20/5/2022" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+            </Grid>
+
+            <StackLayout Grid.Row="7" Margin="15">
+                <Label Text="Passengers" FontSize="18" FontAttributes="Bold" />
+                <Label Text="1" Margin="40,0" HorizontalOptions="StartAndExpand"></Label>
+            </StackLayout>
+
+            <StackLayout Grid.Row="7" Grid.Column="1" Margin="15">
+                <Label Text="Cabin" FontSize="18" FontAttributes="Bold" />
+                <Label Text="Economy" Margin="40,0" HorizontalOptions="StartAndExpand"></Label>
+            </StackLayout>
+
+            <Button Grid.Row="8" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand"  
+                    x:Name="FindButton" Text="Find Flights" 
+                    BackgroundColor="Red" />
+
+        </Grid>
+    </ScrollView>
+</ContentPage>

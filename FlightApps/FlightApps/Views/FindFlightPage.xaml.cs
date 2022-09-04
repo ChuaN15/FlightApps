@@ -5,9 +5,9 @@ using Xamarin.Forms.Xaml;
 
 namespace FlightApps.Views
 {
-    public partial class AboutPage : ContentPage
+    public partial class FindFlightPage : ContentPage
     {
-        public AboutPage()
+        public FindFlightPage()
         {
             InitializeComponent();
         }
