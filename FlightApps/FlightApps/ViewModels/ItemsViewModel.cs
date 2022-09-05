@@ -43,6 +43,12 @@ namespace FlightApps.ViewModels
             {
                 LoginService service = new LoginService();
                 var bookingList = await service.GetUserBooking(Application.Current.Properties["email"].ToString());
+
+                for (int i = 0; i < bookingList.Count; i++)
+                {
+                    bookingList[i].text = "FlightScheduleID: " + bookingList[i].FlightScheduleID;
+                    bookingList[i].description = "MYR " + bookingList[i].Amount;
+                }
                 Bookings = new ObservableCollection<Booking>(bookingList);
             }
         }
