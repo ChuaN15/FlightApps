@@ -28,8 +28,8 @@ namespace FlightApps.ViewModels
             set => SetProperty(ref departureTitle, value);
         }
 
-        private DateTime selectedCabin;
-        public DateTime SelectedCabin
+        private Cabin selectedCabin;
+        public Cabin SelectedCabin
         {
             get => selectedCabin;
             set => SetProperty(ref selectedCabin, value);
