@@ -16,7 +16,7 @@
                                     <Label Text="Depart: AirAsia" />
                                     <Grid RowDefinitions="Auto,Auto"
                                   ColumnDefinitions="3*,4*,3*">
-                                        <Label Text="{Binding Time}" Grid.Row="0" Grid.Column="0" TextColor="Black"
+                                        <Label Text="{Binding DisplayTime}" Grid.Row="0" Grid.Column="0" TextColor="Black"
                        HorizontalOptions="Center" FontSize="20"/>
                                         <Label Text="55m" Grid.Row="0" Grid.Column="1" TextColor="Gray"
                        HorizontalOptions="Center" FontSize="15"/>

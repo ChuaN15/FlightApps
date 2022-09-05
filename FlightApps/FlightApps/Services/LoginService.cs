@@ -124,5 +124,48 @@ namespace FlightApps.Services
 
             return null;
         }
+
+        public async Task<string> MakeBooking(Booking booking)
+        {
+            var URL = tempNgrokURL + "Home/Booking";
+
+            Uri uri = new Uri(string.Format(URL, string.Empty));
+
+            string json = JsonConvert.SerializeObject(booking);
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = null;
+            response = await client.PostAsync(uri, content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                return data;
+            }
+
+            return "";
+        }
+
+        public async Task<List<Booking>> GetUserBooking(string email)
+        {
+            var URL = tempNgrokURL + "Home/GetUserBooking";
+
+            Uri uri = new Uri(string.Format(URL, string.Empty));
+
+            string json = JsonConvert.SerializeObject(email);
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = null;
+            response = await client.PostAsync(uri, content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                List<Booking> bookings = JsonConvert.DeserializeObject<List<Booking>>(data);
+                return bookings;
+            }
+
+            return null;
+        }
     }
 }
