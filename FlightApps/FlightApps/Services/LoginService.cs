@@ -11,7 +11,7 @@ namespace FlightApps.Services
     public class LoginService
     {
         HttpClient client = new HttpClient();
-        public string tempNgrokURL = "http://890a-122-129-122-194.ngrok.io/";
+        public string tempNgrokURL = "https://f28e-122-129-122-194.ngrok.io/";
 
         //Post
         public async Task<string> RegisterUser(User user)

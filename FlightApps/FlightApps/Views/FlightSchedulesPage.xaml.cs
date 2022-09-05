@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlightApps.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,10 @@ namespace FlightApps.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class FlightSchedulesPage : ContentPage
 	{
-		public FlightSchedulesPage ()
+		public FlightSchedulesPage (Schedule schedule)
 		{
 			InitializeComponent ();
+
 		}
 	}
 }
