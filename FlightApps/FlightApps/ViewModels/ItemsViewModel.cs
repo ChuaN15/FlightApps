@@ -1,4 +1,5 @@
 ﻿using FlightApps.Models;
+using FlightApps.Services;
 using FlightApps.Views;
 using System;
 using System.Collections.ObjectModel;
@@ -13,6 +14,13 @@ namespace FlightApps.ViewModels
         private Item _selectedItem;
 
         public ObservableCollection<Item> Items { get; }
+
+        private ObservableCollection<Booking> bookings;
+        public ObservableCollection<Booking> Bookings
+        {
+            get => bookings;
+            set => SetProperty(ref bookings, value);
+        }
         public Command LoadItemsCommand { get; }
         public Command AddItemCommand { get; }
         public Command<Item> ItemTapped { get; }
@@ -28,18 +36,25 @@ namespace FlightApps.ViewModels
             AddItemCommand = new Command(OnAddItem);
         }
 
+
+        async void getBookings()
+        {
+            if (Application.Current.Properties.ContainsKey("email"))
+            {
+                LoginService service = new LoginService();
+                var bookingList = await service.GetUserBooking(Application.Current.Properties["email"].ToString());
+                Bookings = new ObservableCollection<Booking>(bookingList);
+            }
+        }
+
+
         async Task ExecuteLoadItemsCommand()
         {
             IsBusy = true;
 
             try
             {
-                Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
-                foreach (var item in items)
-                {
-                    Items.Add(item);
-                }
+                getBookings();
             }
             catch (Exception ex)
             {

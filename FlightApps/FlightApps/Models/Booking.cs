@@ -12,6 +12,9 @@ namespace FlightApps.Models
         public int FlightScheduleID { get; set; }
         public int PassengerCount { get; set; }
 
+        public string text { get; set; }
+        public string description { get; set; }
+
         public Schedule FlightSchedule { get; set; }
     }
 }

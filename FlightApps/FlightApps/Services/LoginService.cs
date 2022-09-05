@@ -158,7 +158,7 @@ namespace FlightApps.Services
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = null;
-            response = await client.PostAsync(uri, content);
+            response = await client.GetAsync(uri + "?email=" + email);
 
             if (response.IsSuccessStatusCode)
             {

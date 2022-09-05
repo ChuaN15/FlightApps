@@ -25,7 +25,7 @@ namespace FlightApps.Views
 			vm.ScheduleList = new ObservableCollection<Schedule>(schedule);
 		}
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
 			if(!Application.Current.Properties.ContainsKey("email"))
             {
@@ -43,7 +43,7 @@ namespace FlightApps.Views
 			booking.FlightScheduleID = ScheduleID;
 			booking.Email = Application.Current.Properties["email"].ToString();
 
-			string result = service.MakeBooking(booking).Result;
+			string result = await service.MakeBooking(booking);
 
 			if(result.ToLower().Contains("success"))
             {

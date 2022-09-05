@@ -45,7 +45,7 @@ namespace FlightApps.Views
             else
             {
                 lblError.Text = "";
-                Application.Current.MainPage.Navigation.PushAsync(new SignUpPage());
+                Application.Current.MainPage.Navigation.PushAsync(new ItemsPage());
             }
         }
     }
