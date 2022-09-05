@@ -27,11 +27,12 @@ namespace FlightApps.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-			if(!Application.Current.Properties.ContainsKey("email") &&
-				string.IsNullOrEmpty(Application.Current.Properties["email"].ToString()))
+			if(!Application.Current.Properties.ContainsKey("email"))
             {
 				DisplayAlert("Error", "Please login before purchase flight tickets.", "OK");
+				return;
             }
+
 			string data = ((Button)sender).BindingContext.ToString();
 			LoginService service = new LoginService();
 
