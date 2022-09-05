@@ -79,5 +79,50 @@ namespace FlightApps.Services
 
             return null;
         }
+
+        //Retrieve Flight Schedules
+        public async Task<List<Schedule>> GetDepartureScheduleList(FlightRequest request)
+        {
+            var URL = tempNgrokURL + "Home/GetDepartureSchedules";
+
+            Uri uri = new Uri(string.Format(URL, string.Empty));
+
+            string json = JsonConvert.SerializeObject(request);
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = null;
+            response = await client.PostAsync(uri, content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                List<Schedule> schedules = JsonConvert.DeserializeObject<List<Schedule>>(data);
+                return schedules;
+            }
+
+            return null;
+        }
+
+        public async Task<List<Schedule>> GetArrivalScheduleList(FlightRequest request)
+        {
+            var URL = tempNgrokURL + "Home/GetArrivalSchedules";
+
+            Uri uri = new Uri(string.Format(URL, string.Empty));
+
+            string json = JsonConvert.SerializeObject(request);
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = null;
+            response = await client.PostAsync(uri, content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                List<Schedule> schedules = JsonConvert.DeserializeObject<List<Schedule>>(data);
+                return schedules;
+            }
+
+            return null;
+        }
     }
 }
