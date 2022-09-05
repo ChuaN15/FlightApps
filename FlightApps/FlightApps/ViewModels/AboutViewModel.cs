@@ -20,15 +20,33 @@ namespace FlightApps.ViewModels
             get => airportList;
             set => SetProperty(ref airportList, value);
         }
-        public Airport DepartureAirport { get; }
-        public Airport ArrivalAirport { get; }
-        public Cabin SelectedCabin { get; }
 
         private string departureTitle = "Retrieving...";
         public string DepartureTitle
         {
             get => departureTitle;
             set => SetProperty(ref departureTitle, value);
+        }
+
+        private DateTime selectedCabin;
+        public DateTime SelectedCabin
+        {
+            get => selectedCabin;
+            set => SetProperty(ref selectedCabin, value);
+        }
+
+        private Airport departureAirport;
+        public Airport DepartureAirport
+        {
+            get => departureAirport;
+            set => SetProperty(ref departureAirport, value);
+        }
+
+        private Airport arrivalAirport;
+        public Airport ArrivalAirport
+        {
+            get => arrivalAirport;
+            set => SetProperty(ref arrivalAirport, value);
         }
 
 

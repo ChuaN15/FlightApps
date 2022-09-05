@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlightApps.ViewModels;
+using System;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -7,9 +8,13 @@ namespace FlightApps.Views
 {
     public partial class FindFlightPage : ContentPage
     {
+        AboutViewModel vm;
+        bool isOneway = false;
         public FindFlightPage()
         {
             InitializeComponent();
+            vm = new AboutViewModel();
+            this.BindingContext = vm;
         }
 
         private void StartDatePicker_DateSelected(object sender, DateChangedEventArgs e)
@@ -30,6 +35,7 @@ namespace FlightApps.Views
             lblRoundTrip.FontSize = 20;
             lblDash.IsVisible = false;
             EndDatePicker.IsVisible = false;
+            isOneway = true;
         }
 
         private void RoundTripRecognizer_Tapped(object sender, EventArgs e)
@@ -40,6 +46,33 @@ namespace FlightApps.Views
             lblOneWay.FontSize = 20;
             lblDash.IsVisible = true;
             EndDatePicker.IsVisible = true;
+            isOneway = false;
+
+        }
+
+        private void FindButton_Clicked(object sender, EventArgs e)
+        {
+            int passengerAmount = 0;
+
+            if(!int.TryParse(entryPassenger.Text, out passengerAmount) || passengerAmount <= 0)
+            {
+                DisplayAlert("Error", "Please enter valid amount of passengers.", "OK");
+            }
+            else if (vm.SelectedCabin == null || vm.DepartureAirport == null ||
+                vm.ArrivalAirport == null)
+            {
+                DisplayAlert("Error", "Please select all of the options.", "OK");
+            }
+            else if(!isOneway)
+            {
+                if(vm.StartDate > vm.EndDate)
+                {
+                    DisplayAlert("Error", "Please enter valid end date.", "OK");
+                }
+            }
+
+
+            
         }
     }
 }

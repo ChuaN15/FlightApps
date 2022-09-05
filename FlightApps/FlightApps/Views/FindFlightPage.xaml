@@ -4,10 +4,6 @@
              x:Class="FlightApps.Views.FindFlightPage"
              xmlns:vm="clr-namespace:FlightApps.ViewModels"
              Title="Book Flight">
-    
-    <ContentPage.BindingContext>
-        <vm:AboutViewModel />
-    </ContentPage.BindingContext>
 
     <ScrollView>
         <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
@@ -78,7 +74,7 @@
             </StackLayout>
 
             <Button Grid.Row="8" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand"  
-                    x:Name="FindButton" Text="Find Flights" 
+                    x:Name="FindButton" Text="Find Flights" Clicked="FindButton_Clicked"
                     BackgroundColor="Red" />
 
         </Grid>
