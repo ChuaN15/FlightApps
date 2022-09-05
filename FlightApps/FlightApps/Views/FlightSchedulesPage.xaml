@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlightApps.Views.FlightSchedulesPage">
+    <ContentPage.Content>
+        <StackLayout Margin="15">
+            <Label Text="{Binding DisplayPrice}" TextColor="Black"
+                       HorizontalOptions="StartAndExpand" FontSize="25" Margin="0,0,0,10"/>
+            <CollectionView ItemsSource="{Binding Schedules}" 
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Frame BorderColor="Gray" Margin="20">
+                                <StackLayout>
+                                    <Label Text="Depart: AirAsia" />
+                                    <Grid RowDefinitions="Auto,Auto"
+                                  ColumnDefinitions="3*,4*,3*">
+                                        <Label Text="{Binding Time}" Grid.Row="0" Grid.Column="0" TextColor="Black"
+                       HorizontalOptions="Center" FontSize="20"/>
+                                        <Label Text="55m" Grid.Row="0" Grid.Column="1" TextColor="Gray"
+                       HorizontalOptions="Center" FontSize="15"/>
+                                        <Label Text="12:20" Grid.Row="0" Grid.Column="2" TextColor="Black"
+                       HorizontalOptions="Center" FontSize="20"/>
+                                        <Label Text="{Binding DepartureAirport}" Grid.Row="1" Grid.Column="0" TextColor="Gray"
+                       HorizontalOptions="Center" FontSize="16"/>
+                                        <Label Text="Non-stop" Grid.Row="1" Grid.Column="1" TextColor="Gray"
+                       HorizontalOptions="Center" FontSize="15"/>
+                                        <Label Text="{Binding ArrivalAirport}" Grid.Row="1" Grid.Column="2" TextColor="Gray"
+                       HorizontalOptions="Center" FontSize="16"/>
+                                    </Grid>
+                                    <BoxView 
+                   HeightRequest="1"
+                   Color="LightGray"
+                   Margin ="0"/>
+                                    <Label Text="7kg per guest" TextColor="Gray"
+                       HorizontalOptions="StartAndExpand" FontSize="15"/>
+                                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                        <StackLayout Spacing="0">
+                                            <Label Text="{Binding DisplayPrice}" TextColor="Black"
+                       HorizontalOptions="StartAndExpand" FontSize="25"/>
+                                            <Label Text="{Binding DisplayPassengerAmount}" TextColor="Gray"
+                       HorizontalOptions="StartAndExpand" FontSize="15"/>
+                                        </StackLayout>
+                                        <Button HorizontalOptions="EndAndExpand" Text="Select" Padding="15"></Button>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,4 +1,6 @@
-﻿using FlightApps.ViewModels;
+﻿using FlightApps.Models;
+using FlightApps.Services;
+using FlightApps.ViewModels;
 using System;
 using System.ComponentModel;
 using Xamarin.Forms;
@@ -50,31 +52,43 @@ namespace FlightApps.Views
 
         }
 
-        private void FindButton_Clicked(object sender, EventArgs e)
+        private async void FindButton_Clicked(object sender, EventArgs e)
         {
             int passengerAmount = 0;
 
             if(!int.TryParse(entryPassenger.Text, out passengerAmount) || passengerAmount <= 0)
             {
                 DisplayAlert("Error", "Please enter valid amount of passengers.", "OK");
+                return;
             }
             else if (vm.SelectedCabin == null || vm.DepartureAirport == null ||
                 vm.ArrivalAirport == null)
             {
                 DisplayAlert("Error", "Please select all of the options.", "OK");
+                return;
             }
             else if(!isOneway)
             {
                 if(vm.StartDate > vm.EndDate)
                 {
                     DisplayAlert("Error", "Please enter valid end date.", "OK");
+                    return;
                 }
             }
 
-            
+            var FlightReq = new FlightRequest();
+            FlightReq.Departure = vm.DepartureAirport.ShortName;
+            FlightReq.Arrival = vm.ArrivalAirport.ShortName;
+            FlightReq.CabinType = vm.SelectedCabin.Name;
+            FlightReq.EndDate = isOneway ? DateTime.MinValue : vm.EndDate;
+            FlightReq.StartDate = vm.StartDate;
+            FlightReq.Passenger = passengerAmount;
 
 
-            
+            DisplayAlert("", "Loading...", "OK");
+            LoginService service = new LoginService();
+            var schedules = await service.GetDepartureScheduleList(FlightReq);
+
         }
     }
 }

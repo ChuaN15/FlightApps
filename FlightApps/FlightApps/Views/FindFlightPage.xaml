@@ -8,39 +8,39 @@
     <ScrollView>
         <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
           ColumnDefinitions="5*,5*">
-        <StackLayout Margin="-10,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10" BackgroundColor="LightGray">
-            <Label x:Name="lblRoundTrip" Text="Round Trip" FontAttributes="Bold" FontSize="24" HorizontalOptions="CenterAndExpand"></Label>
+            <StackLayout Margin="-10,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10" BackgroundColor="LightGray">
+                <Label x:Name="lblRoundTrip" Text="Round Trip" FontAttributes="Bold" FontSize="24" HorizontalOptions="CenterAndExpand"></Label>
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="RoundTripRecognizer_Tapped" NumberOfTapsRequired="1" />
                 </StackLayout.GestureRecognizers>
             </StackLayout>
-        <StackLayout Margin="-10,0" Orientation="Horizontal" Grid.Column="1" HorizontalOptions="FillAndExpand" Padding="10" BackgroundColor="LightGray">
+            <StackLayout Margin="-10,0" Orientation="Horizontal" Grid.Column="1" HorizontalOptions="FillAndExpand" Padding="10" BackgroundColor="LightGray">
                 <Label x:Name="lblOneWay" Text="One Way" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnewayRecognizer_Tapped" NumberOfTapsRequired="1" />
                 </StackLayout.GestureRecognizers>
-        </StackLayout>
+            </StackLayout>
 
-        <StackLayout Grid.Row="1" Margin="15" Grid.ColumnSpan="2">
-            <Label Text="Departure" FontSize="36" TextColor="DarkBlue" FontAttributes="Bold"></Label>
+            <StackLayout Grid.Row="1" Margin="15" Grid.ColumnSpan="2">
+                <Label Text="Departure" FontSize="36" TextColor="DarkBlue" FontAttributes="Bold"></Label>
                 <Picker Title="{Binding DepartureTitle}" ItemsSource="{Binding AirportList}"
             ItemDisplayBinding="{Binding City}" SelectedItem="{Binding DepartureAirport, Mode=TwoWay}"
                     />
             </StackLayout>
 
-        <BoxView Grid.Row="2" Grid.ColumnSpan="2"
+            <BoxView Grid.Row="2" Grid.ColumnSpan="2"
                    HeightRequest="1"
                    Color="LightGray"
                    Margin ="20, 0, 20, 0"/>
-        
-        <StackLayout Grid.Row="3" Margin="15" Grid.ColumnSpan="2">
-            <Label Text="Arrival" FontSize="36" TextColor="DarkBlue" FontAttributes="Bold"></Label>
+
+            <StackLayout Grid.Row="3" Margin="15" Grid.ColumnSpan="2">
+                <Label Text="Arrival" FontSize="36" TextColor="DarkBlue" FontAttributes="Bold"></Label>
                 <Picker Title="{Binding DepartureTitle}" ItemsSource="{Binding AirportList}" 
             ItemDisplayBinding="{Binding City}" SelectedItem="{Binding ArrivalAirport, Mode=TwoWay}"
                     />
             </StackLayout>
 
-        <BoxView Grid.Row="4" Grid.ColumnSpan="2"
+            <BoxView Grid.Row="4" Grid.ColumnSpan="2"
                    HeightRequest="1"
                    Color="LightGray"
                    Margin ="20, 0, 20, 0"/>
@@ -67,7 +67,7 @@
 
             <StackLayout Grid.Row="7" Grid.Column="1" Margin="15">
                 <Label Text="Cabin" FontSize="18" FontAttributes="Bold" />
-            <Picker x:Name="CabinPicker" Title="Cabin" ItemsSource="{Binding CabinList}"
+                <Picker x:Name="CabinPicker" Title="Cabin" ItemsSource="{Binding CabinList}"
             ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedCabin, Mode=TwoWay}"
                     />
 
