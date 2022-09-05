@@ -7,7 +7,6 @@ namespace FlightApps.Models
     public class Schedule
     {
         public Nullable<System.DateTime> Date { get; set; }
-        public Nullable<System.TimeSpan> Time { get; set; }
         public string FlightNo { get; set; }
         public string DepartureAirport { get; set; }
         public string ArrivalAirport { get; set; }

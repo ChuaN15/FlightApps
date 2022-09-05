@@ -4,9 +4,9 @@
              x:Class="FlightApps.Views.FlightSchedulesPage">
     <ContentPage.Content>
         <StackLayout Margin="15">
-            <Label Text="{Binding DisplayPrice}" TextColor="Black"
-                       HorizontalOptions="StartAndExpand" FontSize="25" Margin="0,0,0,10"/>
-            <CollectionView ItemsSource="{Binding Schedules}" 
+            <Label Text="Departing Flights" TextColor="Black"
+                       HorizontalOptions="StartAndExpand" FontSize="25"/>
+            <CollectionView ItemsSource="{Binding ScheduleList}" 
                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>

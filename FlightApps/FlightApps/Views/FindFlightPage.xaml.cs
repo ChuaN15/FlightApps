@@ -85,10 +85,17 @@ namespace FlightApps.Views
             FlightReq.Passenger = passengerAmount;
 
 
-            DisplayAlert("", "Loading...", "OK");
             LoginService service = new LoginService();
             var schedules = await service.GetDepartureScheduleList(FlightReq);
 
+            if(schedules.Count == 0)
+            {
+                DisplayAlert("", "No schedule was found with the selected criteria.", "OK");
+            }
+            else
+            {
+                Application.Current.MainPage.Navigation.PushAsync(new FlightSchedulesPage(schedules));
+            }
         }
     }
 }
