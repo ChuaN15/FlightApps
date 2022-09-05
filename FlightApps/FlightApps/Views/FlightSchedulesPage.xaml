@@ -42,7 +42,8 @@
                                             <Label Text="{Binding DisplayPassengerAmount}" TextColor="Gray"
                        HorizontalOptions="StartAndExpand" FontSize="15"/>
                                         </StackLayout>
-                                        <Button HorizontalOptions="EndAndExpand" Text="Select" Padding="15"></Button>
+                                        <Button HorizontalOptions="EndAndExpand" Text="Select" Padding="15" 
+                                                Clicked="Button_Clicked" BindingContext="{Binding ID}"></Button>
                                     </StackLayout>
                                 </StackLayout>
                             </Frame>

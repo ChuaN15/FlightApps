@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace FlightApps.Services
 {
@@ -54,6 +55,7 @@ namespace FlightApps.Services
             {
                 string data = await response.Content.ReadAsStringAsync();
                 User selectedUser = JsonConvert.DeserializeObject<User>(data);
+                Application.Current.Properties["email"] = selectedUser.Email;
                 return selectedUser;
             }
 
